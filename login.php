@@ -1,3 +1,6 @@
+<?php session_start(); ?>
+<?php require_once('connect.php') ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,7 +24,7 @@
   <!-- end .sidebar1 --></div>
   <div class="content">
     <h1>Login</h1>
-<form name="form1" method="post" action="yourfilename.php">  
+<form name="form1" method="post" action="action.php">  
 <fieldset>  
 <!--<legend>j</legend>-->
 <table>  
@@ -32,7 +35,7 @@
 <td><label for="password">Password :</label></td><td><input name="password" type="password" id="password" size="30"></td>  
 </tr>  
 <tr>  
-<td class="submit"></td><td><input type="submit" value="Submit"></td>  
+<td class="submit"></td><td><input type="submit" value="Login"></td>  
 </tr>  
 </table>  
 </fieldset>  
