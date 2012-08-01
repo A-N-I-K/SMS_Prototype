@@ -1,0 +1,38 @@
+1. CREATE DATABASE
+
+create database ScholarshipManagement;
+
+2. CREATING TABLES
+
+use ScholarshipManagement;
+
+CREATE TABLE Authenticator ( S_id char(10), Password char(15), primary key (S_id));
+
+CREATE TABLE Student ( Id int,S_id char(10), Name char(25) not null, Department varchar(30), Major char(5), CurrentCredit int, CGPA float(2,2), Phone char(10), Email char(25), primary key (Id), foreign key(S_id) references Authenticator(S_id) on delete CASCADE on update CASCADE);
+
+CREATE TABLE Scholarship ( Type_id char(2), TypeName char(25) not null, primary key (Type_id));
+
+CREATE TABLE Applies_for ( S_id char(10), Type_id char(2), primary key (S_id,Type_id), foreign key (S_id) references Student (S_id) on delete CASCADE on update CASCADE, foreign key (Type_id) references Scholarship (Type_id) on delete CASCADE on update CASCADE);
+
+CREATE TABLE Guardian ( S_id char(10) not null, F_Name char(25), F_Occ char(20), F_income int, F_Phone char(10), M_Name char(25), M_Occ char(20), M_income int, M_Phone char(10), Fixed_asset int, primary key (S_id), foreign key (S_id) references Student (S_id) on delete CASCADE on update CASCADE);
+
+CREATE TABLE Administrator ( Admin_id char(3), Admin_Name char(25) not null, Password char(10), primary key (Admin_id));
+
+
+CREATE TABLE Accepts ( Admin_id char(2), S_id char(10), Type_id char(2), Percentage int, primary key (admin_id,S_id,Type_id), foreign key (Admin_id) references Administrator (Admin_id) on delete CASCADE on update CASCADE, foreign key (S_id) references Student (S_id) on delete CASCADE on update CASCADE, foreign key (Type_id) references Scholarship (Type_id) on delete CASCADE on update CASCADE);
+
+CREATE TABLE Accounts (Acc_id char(3), Password char(15), primary key (Acc_id));
+
+CREATE TABLE Evaluate_Payment (Acc_id char(3), S_id char(10), Paid boolean, primary key(Acc_id, S_id), foreign key (S_id) references Student (S_id) on delete CASCADE on update CASCADE, foreign key (Acc_id) references Accounts (Acc_id) on delete CASCADE on update CASCADE);
+
+
+CREATE TABLE Documents (S_id char(10), Doc_Name char(25), File varchar(100), primary key(S_id,Doc_name), foreign key (S_id) references Student (S_id) on delete CASCADE on update CASCADE);
+
+
+3. ADVANCED QUERIES
+
+
+
+
+
+
